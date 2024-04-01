@@ -16,8 +16,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.use('/api', routs);
+app.use('/api', express.static(__dirname + '/doc'));
 
 app.listen(POSTGRE_PORT, () => {
   console.log(`Example app listening at http://localhost:${POSTGRE_PORT}`);
-  console.log(`${POSTGRE_USER}, ${POSTGRE_HOST}, ${POSTGRE_DATABASE}, ${POSTGRE_PASSWORD}, ${POSTGRE_PORT}}`);
 });

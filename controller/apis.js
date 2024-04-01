@@ -6,10 +6,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteTask = exports.update = exports.create = exports.read = void 0;
 const db_1 = __importDefault(require("../database/db"));
 const read = (req, res) => {
-    const userId = 'user1';
+    const data = req.query;
     const query = {
         text: "SELECT * FROM public.tasks WHERE user_id=$1",
-        values: [userId]
+        values: [data.user_id]
     };
     db_1.default.query(query, (error, result) => {
         if (error) {
@@ -58,7 +58,7 @@ const update = (req, res) => {
 };
 exports.update = update;
 const deleteTask = (req, res) => {
-    const id = req.params._id;
+    const id = +req.params.id;
     const query = {
         text: "DELETE FROM public.tasks WHERE id = $1",
         values: [id]
