@@ -6,7 +6,8 @@ import { Express } from 'express';
 import express from 'express';
 import cors from 'cors';
 
-import routs from './router/routs'
+const routs = require('./router/routs')
+
 
 const app: Express = express();
 
@@ -19,5 +20,6 @@ app.use('/api', routs);
 app.use('/api', express.static(__dirname + '/doc'));
 
 app.listen(POSTGRE_PORT, () => {
-  console.log(`Example app listening at http://localhost:${POSTGRE_PORT}`);
+  console.log(__dirname)
+  console.log(`Example app listening at ${POSTGRE_HOST}:${POSTGRE_PORT}`);
 });

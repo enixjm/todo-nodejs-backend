@@ -2,11 +2,11 @@ import { Express } from 'express';
 import express from 'express';
 import * as api from '../controller/apis'; 
 
-const router: Express = express();
+const routs: Express = express();
 
-router.get('/read', api.read);
-router.post('/create', api.create);
-router.put('/update', api.update);
-router.delete('/delete/:id', api.deleteTask);
+routs.get('/read', api.read);
+routs.post('/create', api.create);
+routs.put('/update', api.update);
+routs.delete('/delete/:id', api.deleteTask);
 
-export default router;
+module.exports = routs;

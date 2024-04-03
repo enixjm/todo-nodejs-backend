@@ -28,13 +28,16 @@ const create = (req, res) => {
         text: "INSERT INTO public.tasks (user_id, title, tag, deadline, is_completed, is_important) VALUES ($1, $2, $3, $4, $5, $6)",
         values: [data.user_id, data.title, data.tag, data.deadline, data.isCompleted, data.isImportant]
     };
+    if (data.user_id == null || data.title == null || data.deadline == null || data.isCompleted == null || data.isImportant == null) {
+        return res.status(400).send("Error Invalid Request");
+    }
     db_1.default.query(query, (error, result) => {
         if (error) {
             console.error('Error executing query', error);
-            res.status(500).send(error);
+            return res.status(500).send(error);
         }
         else {
-            res.status(200).json(result.rows);
+            return res.status(200).json(result.rows);
         }
     });
 };

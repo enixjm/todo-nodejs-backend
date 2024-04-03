@@ -28,9 +28,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const api = __importStar(require("../controller/apis"));
-const router = (0, express_1.default)();
-router.get('/read', api.read);
-router.post('/create', api.create);
-router.put('/update', api.update);
-router.delete('/delete/:id', api.deleteTask);
-exports.default = router;
+const routs = (0, express_1.default)();
+routs.get('/read', api.read);
+routs.post('/create', api.create);
+routs.put('/update', api.update);
+routs.delete('/delete/:id', api.deleteTask);
+module.exports = routs;
